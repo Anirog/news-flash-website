@@ -3,21 +3,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NewsFlash | Post</title>
+    <title>NewsFlash | {{ post.title }}</title>
+    <meta name="description" content="{{ post.excerpt | striptags | truncate(150, True, '...') }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.png">
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Swiper.js styles -->
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css"/>
     <!-- Custom styles -->
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="navbar container">
-            <a href="./index.html">
+            <a href="../index.html">
                 <h2 class="logo">NewsFlash</h2>
             </a>
 
@@ -93,52 +94,66 @@
     <section class="blog-post section-header-offset">
         <div class="blog-post-container container">
             <div class="blog-post-data">
-                <h3 class="title blog-post-title">Is VR the future?</h3>
+                <h3 class="title blog-post-title">{{ post.title }}</h3>
                 <div class="article-data">
-                    <span>Dec 6th 2021</span>
+                    <span>{{ post.date }}</span>
                     <span class="article-data-spacer"></span>
-                    <span>4 Min read</span>
+                    <span>{{ post.read_time or '5 Min read' }}</span>
                 </div>
-                <img src="./assets/images/featured/featured-1.jpg" alt="">
+                {% if post.image %}
+                <img src="{{ post.image }}" alt="{{ post.image_alt or 'Blog post image' }}">
+                {% endif %}
             </div>
 
             <div class="container">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis eius possimus hic eligendi distinctio rerum incidunt, esse quasi eum molestiae ducimus ipsam quae, aliquid ullam placeat dolorum nulla vero. Quam? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente repellat consequatur culpa, repudiandae aut dolores iusto. Rem natus soluta, dolores, ad deleniti, aut dolorem corrupti quasi amet unde delectus hic?
-                </p>
-                
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis eius possimus hic eligendi distinctio rerum incidunt, esse quasi eum molestiae ducimus ipsam quae, aliquid ullam placeat dolorum nulla vero. Quam? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero quod necessitatibus, aspernatur pariatur asperiores earum quas adipisci veritatis quidem facilis! Nihil veniam quaerat nulla possimus, asperiores vero voluptatum placeat. Eveniet!
-                </p>
+                <div class="post-content">
+                    {{ post.body | safe }}
+                </div>
 
-                <blockquote class="quote">
-                    <p><span><i class="ri-double-quotes-l"></i></span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptates, laboriosam voluptatum quos non consequuntur nesciunt necessitatibus tempora quod inventore corporis rem nihil itaque, at provident minus aliquam veritatis. Labore?  <span><i class="ri-double-quotes-r"></i></span></p>
-                </blockquote>
-            
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis eius possimus hic eligendi distinctio rerum incidunt, esse quasi eum molestiae ducimus ipsam quae, aliquid ullam placeat dolorum nulla vero. Quam? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero quod necessitatibus, aspernatur pariatur asperiores earum quas adipisci veritatis quidem facilis! Nihil veniam quaerat nulla possimus, asperiores vero voluptatum placeat. Eveniet!
-                </p>
+                {% if post.tags %}
+                <div class="blog-tags">
+                    {% for tag in post.tags %}
+                    <a href="../tag-{{ tag | lower | replace(' ', '-') }}.html" class="blog-tag">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
 
+                <nav class="post-nav">
+                    {% if post.prev_post %}
+                    <a href="{{ post.prev_post.url }}" class="prev">← Previous</a>
+                    {% else %}
+                    <span class="prev disabled">← Previous</span>
+                    {% endif %}
+
+                    {% if post.next_post %}
+                    <a href="{{ post.next_post.url }}" class="next">Next →</a>
+                    {% else %}
+                    <span class="next disabled">Next →</span>
+                    {% endif %}
+                </nav>
+
+                {% if post.author %}
                 <div class="author d-grid">
                     <div class="author-image-box">
-                        <img src="./assets/images/author.jpg" alt="" class="article-image">
+                        {% if post.author.image %}
+                        <img src="{{ post.author.image }}" alt="{{ post.author.name }}" class="article-image">
+                        {% endif %}
                     </div>
                     <div class="author-about">
-                        <h3 class="author-name">John Doe</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque quis repellat rerum, possimus cumque dolor repellendus eligendi atque explicabo exercitationem id.</p>
+                        <h3 class="author-name">{{ post.author.name }}</h3>
+                        <p>{{ post.author.bio }}</p>
+                        {% if post.author.social %}
                         <ul class="list social-media">
+                            {% for social in post.author.social %}
                             <li class="list-item">
-                                <a href="#" class="list-link"><i class="ri-instagram-line"></i></a>
+                                <a href="{{ social.url }}" class="list-link"><i class="{{ social.icon }}"></i></a>
                             </li>
-                            <li class="list-item">
-                                <a href="#" class="list-link"><i class="ri-facebook-circle-line"></i></a>
-                            </li>
-                            <li class="list-item">
-                                <a href="#" class="list-link"><i class="ri-twitter-line"></i></a>
-                            </li>
+                            {% endfor %}
                         </ul>
+                        {% endif %}
                     </div>
                 </div>
+                {% endif %}
             </div>
         </div>
     </section>
@@ -148,7 +163,7 @@
         <div class="footer-container container d-grid">
             
             <div class="company-data">
-                <a href="./index.html">
+                <a href="../index.html">
                     <h2 class="logo">NewsFlash</h2>
                 </a>
                 <p class="company-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, iure. Harum, animi dolores, nam, ad magni expedita.</p>
@@ -238,8 +253,8 @@
     </footer>
 
     <!-- Swiper.js -->
-    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
     <!-- Custom script -->
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

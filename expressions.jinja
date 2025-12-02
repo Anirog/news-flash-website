@@ -1,0 +1,30 @@
+{# blog-index.html #}
+
+{# Loops #}
+{% for post in posts %}
+{% for tag in post.tags %}
+{% for number in pagination.page_numbers %}
+
+{# Variables #}
+{{ post.title }}
+{{ post.url }}
+{{ post.image }}
+{{ post.image_alt or 'Blog image' }}
+{{ post.date }}
+{{ tag }}
+{{ number }}
+{{ pagination.prev_page }}
+{{ pagination.next_page }}
+
+{# Filters #}
+{{ tag | lower | replace(' ', '-') }}
+{{ post.excerpt | safe }}
+
+{# Conditionals #}
+{% if post.image %}
+{% if number == pagination.current %}
+{% if pagination.prev_page %}
+{% if pagination.next_page %}
+
+{# Ternary/Complex expressions #}
+{{ 'index.html' if number == 1 else 'page-' ~ number ~ '.html' }}

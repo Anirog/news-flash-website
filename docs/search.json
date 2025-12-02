@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Test Post Title",
+    "excerpt": "<p>On the rear of the RX100 VII, there are six primary buttons and a dial with four directional buttons. After experimenting with various setups, you can customise some of these...</p>",
+    "url": "/posts/2025-12-02-test-post-title.html",
+    "image": "https://ik.imagekit.io/1wh3oo1zp/larrie-knighs-default_lhSm1y4Pb?updatedAt=1754650089194",
+    "image_alt": "Test Alt Text",
+    "tags": [
+      "photography"
+    ]
+  },
+  {
+    "title": "Welcome to NewsFlash",
+    "excerpt": "<p>Welcome to NewsFlash. This project keeps publishing simple: write in Markdown, render with Python and Jinja, and push the static files to GitHub Pages....</p>",
+    "url": "/posts/2025-12-02-welcome-to-newsflash.html",
+    "image": "./assets/images/featured/featured-1.jpg",
+    "image_alt": "NewsFlash launch banner",
+    "tags": [
+      "Launch",
+      "Updates"
+    ]
+  },
+  {
+    "title": "Remove Blue Dot Messages GitHub Fix",
+    "excerpt": "<p>When I went to GitHub.com, a nice little blue dot would appear next to the Messages icon whenever there was something new — a notification, a mention, or anything that...</p>",
+    "url": "/posts/2025-10-28-remove-blue-dot-messages-github-fix.html",
+    "image": "https://ik.imagekit.io/1wh3oo1zp/Remove-Blue-Dot-Messages-GitHub-Fix_XtKuVGmWR",
+    "image_alt": "Remove Blue Dot Messages GitHub Fix",
+    "tags": [
+      "tech",
+      "github"
+    ]
+  },
+  {
+    "title": "The Playbook - Doc Rivers A Coach's Rules for Life Netflix Documentary",
+    "excerpt": "<p>The dictionary definition of Ubuntu is:...</p>",
+    "url": "/posts/2025-09-07-the-playbook-doc-rivers-a-coach-s-rules-for-life-netflix-documentary.html",
+    "image": "https://ik.imagekit.io/1wh3oo1zp/the-playbook_zUZlPR4Fz",
+    "image_alt": "The Playbook - Doc Rivers A Coach's Rules for Life Netflix Documentary",
+    "tags": [
+      "tv"
+    ]
+  },
+  {
+    "title": "Twitter (X) Accounts I Like",
+    "excerpt": "<p>John Shuttleworth (aka Graham Fellows) is a comedian, I love his style of comedy, he writes songs about everyday life, one of my favourites being Two Margarines which talks about...</p>",
+    "url": "/posts/2025-08-08-twitter-x-accounts-i-like.html",
+    "image": null,
+    "image_alt": null,
+    "tags": [
+      "social"
+    ]
+  },
+  {
+    "title": "Get Smart With Money - Netflix Documentary",
+    "excerpt": "<p>Before you spend any money, there are four questions you should really ask yourself, and those four questions are:...</p>",
+    "url": "/posts/2025-08-03-get-smart-with-money-netflix-documentary.html",
+    "image": "https://ik.imagekit.io/1wh3oo1zp/Get-Smart-With-Money-netflix-poster_89R3exj20?updatedAt=1754244007683",
+    "image_alt": "Likes, Wants, Needs and Loves",
+    "tags": [
+      "tv"
+    ]
+  },
+  {
+    "title": "An Alternative to the Ugmonk Analog Productivity Card Holder",
+    "excerpt": "<p>I saw the ugmonk analog productivity card holder on YouTube it's a nice wooden card holder that holds productivity cards. There are three different cards: Today, Next and Someday....</p>",
+    "url": "/posts/2025-06-01-an-alternative-to-the-ugmonk-analog-productivity-card-holder.html",
+    "image": "https://anirog.github.io/images/IMG_0940.WEBP",
+    "image_alt": "The Etsy card holder",
+    "tags": [
+      "productivity"
+    ]
+  }
+]
