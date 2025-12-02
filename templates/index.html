@@ -328,24 +328,19 @@
                 <h6 class="title footer-title">Categories</h6>
                 
                 <ul class="footer-list list">
+                    {% set all_tags = [] %}
+                    {% for post in featured_posts + older_posts %}
+                        {% for tag in post.tags %}
+                            {% if tag not in all_tags %}
+                                {% set _ = all_tags.append(tag) %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% for tag in all_tags[:6] %}
                     <li class="list-item">
-                        <a href="#" class="list-link">Travel</a>
+                        <a href="./tag-{{ tag | lower | replace(' ', '-') }}.html" class="list-link">{{ tag }}</a>
                     </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Food</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Technology</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Health</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Nature</a>
-                    </li>
-                    <li class="list-item">
-                        <a href="#" class="list-link">Fitness</a>
-                    </li>
+                    {% endfor %}
                 </ul>
 
             </div>
