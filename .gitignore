@@ -1,0 +1,33 @@
+.DS_Store
+Icon
+Zold/
+.vscode/
+sandbox/
+Icon?
+
+# Python-specific ignores
+venv/
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Flask-specific ignores
+instance/
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Optional: coverage reports
+coverage/
